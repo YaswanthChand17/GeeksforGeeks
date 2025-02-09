@@ -1,0 +1,22 @@
+'''
+# Tree Node
+class Node:
+
+    def __init__(self, val):
+        self.right = None
+        self.data = val
+        self.left = None
+'''
+class Solution:
+    def diameter(self, root):
+        # Your code here
+        def d(node):
+            if not node:
+                return 0
+            ld= d(node.left)
+            rd=d(node.right)
+            self.max_diameter=max(self.max_diameter,ld+rd)
+            return 1 + max(ld,rd)
+        self.max_diameter=0
+        d(root)
+        return self.max_diameter
